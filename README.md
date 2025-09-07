@@ -1,3 +1,3 @@
 # Rock Paper Scissors
 
-CLI based _Rock Paper Scissors_!
+Console based _Rock Paper Scissors_!
