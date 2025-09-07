@@ -60,7 +60,7 @@ function playRound(computerChoice, humanChoice) {
 
     }
     // Tie case
-    else if (computerChoice == humanChoice) {
+    else if (computerChoice.toUpperCase() == humanChoice) {
         console.log("It's a tie");
     }
 
@@ -78,7 +78,7 @@ function playGame() {
     }
     if (humanScore > computerScore) console.log("The user won!");
     else if (computerScore > humanScore) console.log("The computer won!");
-    else console.log("It's a tie!");
+    else console.log("Game Tied!");
 }
 
 
