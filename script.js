@@ -1,3 +1,6 @@
+
+
+
 // Initialize two global variables for score!
 
 let humanScore = 0, computerScore = 0;
@@ -23,12 +26,6 @@ function getComputerChoice() {
             return computerChoice;
 
     }
-}
-
-// Function to get human choice 
-function getHumanChoice() {
-    const humanChoice = prompt("Enter your choice (Rock, Paper or Scissors): ").toUpperCase();
-    return humanChoice;
 }
 
 // PlayRound function to check the winner
@@ -70,17 +67,53 @@ function playRound(computerChoice, humanChoice) {
 
 // PlayGame function that updates and runs playround function 5 times!
 function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        playRound(computerChoice, humanChoice);
-
-    }
     if (humanScore > computerScore) console.log("The user won!");
     else if (computerScore > humanScore) console.log("The computer won!");
     else console.log("Game Tied!");
 }
 
 
-// Call playgame funcion!
-playGame();
+// // Call playgame funcion!
+// playGame();
+
+const scores = document.querySelector('#scores')
+const player = document.createElement('div');
+const comp = document.createElement('div');
+scores.appendChild(player);
+scores.appendChild(comp);
+
+
+function updateScore(player, comp) {
+    player.innerText = `Player score is: ${humanScore}`;
+    comp.innerText = `Computer Score is: ${computerScore}`;
+
+
+}
+
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', (e) => {
+    const humanChoice = e.target.innerText.toUpperCase();
+    const computerChoice = getComputerChoice();
+    playRound(computerChoice, humanChoice);
+    updateScore(player, comp);
+})
+
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', (e) => {
+    const humanChoice = e.target.innerText.toUpperCase();
+    const computerChoice = getComputerChoice();
+    playRound(computerChoice, humanChoice);
+    updateScore(player, comp);
+})
+
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', (e) => {
+    const humanChoice = e.target.innerText.toUpperCase();
+    const computerChoice = getComputerChoice();
+    playRound(computerChoice, humanChoice);
+    updateScore(player, comp);
+})
+
