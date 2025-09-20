@@ -1,6 +1,3 @@
-
-
-
 // Initialize two global variables for score!
 
 let humanScore = 0, computerScore = 0;
@@ -28,59 +25,50 @@ function getComputerChoice() {
     }
 }
 
-// PlayRound function to check the winner
-function playRound(computerChoice, humanChoice) {
-    if (computerChoice == "Rock" && humanChoice == "SCISSORS") {
-        computerScore++;
-    }
-    else if (computerChoice == "Paper" && humanChoice == "ROCK") {
-        computerScore++;
-        console.log(`Computer won,${computerChoice} beats ${humanChoice}`)
-    }
-    else if (computerChoice == "Scissors" && humanChoice == "PAPER") {
-        computerScore++;
-        console.log(`Computer won,${computerChoice} beats ${humanChoice}`)
-
-    }
-    else if (computerChoice == "Scissors" && humanChoice == "ROCK") {
-        humanScore++;
-        console.log(`User won, ${humanChoice} beats ${computerChoice}`);
-    }
-    else if (computerChoice == "Rock" && humanChoice == "PAPER") {
-        humanScore++;
-        console.log(`User won, ${humanChoice} beats ${computerChoice}`);
-
-    }
-    else if (computerChoice == "Paper" && humanChoice == "SCISSORS") {
-        humanScore++;
-        console.log(`User won, ${humanChoice} beats ${computerChoice}`);
-
-    }
-    // Tie case
-    else if (computerChoice.toUpperCase() == humanChoice) {
-        console.log("It's a tie");
-    }
-
-}
-
-
-
-// PlayGame function that updates and runs playround function 5 times!
-function playGame() {
-    if (humanScore > computerScore) console.log("The user won!");
-    else if (computerScore > humanScore) console.log("The computer won!");
-    else console.log("Game Tied!");
-}
-
-
-// // Call playgame funcion!
-// playGame();
-
 const scores = document.querySelector('#scores')
 const player = document.createElement('div');
 const comp = document.createElement('div');
 scores.appendChild(player);
 scores.appendChild(comp);
+
+const update = document.createElement('div');
+scores.appendChild(update);
+
+// PlayRound function to check the winner
+function playRound(computerChoice, humanChoice) {
+    if (computerChoice == "Rock" && humanChoice == "SCISSORS") {
+        computerScore++;
+        update.innerText = `Computer won, ${computerChoice.toUpperCase()} beats ${humanChoice} `;
+    }
+    else if (computerChoice == "Paper" && humanChoice == "ROCK") {
+        computerScore++;
+        update.innerText = `Computer won, ${computerChoice.toUpperCase()} beats ${humanChoice}`;
+    }
+    else if (computerChoice == "Scissors" && humanChoice == "PAPER") {
+        computerScore++;
+        update.innerText = `Computer won, ${computerChoice.toUpperCase()} beats ${humanChoice}`;
+
+    }
+    else if (computerChoice == "Scissors" && humanChoice == "ROCK") {
+        humanScore++;
+        update.innerText = `User won, ${humanChoice} beats ${computerChoice.toUpperCase()}`;
+    }
+    else if (computerChoice == "Rock" && humanChoice == "PAPER") {
+        humanScore++;
+        update.innerText = `User won, ${humanChoice} beats ${computerChoice.toUpperCase()}`;
+
+    }
+    else if (computerChoice == "Paper" && humanChoice == "SCISSORS") {
+        humanScore++;
+        update.innerText = `User won, ${humanChoice} beats ${computerChoice.toUpperCase()}`;
+
+    }
+    // Tie case
+    else if (computerChoice.toUpperCase() == humanChoice) {
+        update.innerText = "It's a tie";
+    }
+
+}
 
 
 function updateScore(player, comp) {
@@ -90,6 +78,24 @@ function updateScore(player, comp) {
 
 }
 
+const win = document.createElement('div');
+
+
+// PlayGame function 
+function playGame() {
+    if (humanScore > computerScore && humanScore >= 5) {
+        win.innerText = "You won!";
+        scores.appendChild(win);
+
+
+    }
+    else if (computerScore > humanScore && computerScore >= 5) {
+        win.innerText = "You lost!"
+        scores.appendChild(win);
+    }
+}
+
+
 
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', (e) => {
@@ -97,6 +103,7 @@ rock.addEventListener('click', (e) => {
     const computerChoice = getComputerChoice();
     playRound(computerChoice, humanChoice);
     updateScore(player, comp);
+    playGame();
 })
 
 
@@ -106,6 +113,7 @@ paper.addEventListener('click', (e) => {
     const computerChoice = getComputerChoice();
     playRound(computerChoice, humanChoice);
     updateScore(player, comp);
+    playGame()
 })
 
 
@@ -115,5 +123,6 @@ scissors.addEventListener('click', (e) => {
     const computerChoice = getComputerChoice();
     playRound(computerChoice, humanChoice);
     updateScore(player, comp);
+    playGame();
 })
 
