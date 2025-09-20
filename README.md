@@ -1,3 +1,3 @@
 # Rock Paper Scissors
 
-Console based _Rock Paper Scissors_!
+Basic Rock Paper Scissors created using JS during _TOP_
