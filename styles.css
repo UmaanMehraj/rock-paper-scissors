@@ -19,12 +19,17 @@ body {
 button {
   font-size: 18px;
   font-weight: 700;
-  border: 1px double salmon;
+  border: 2px solid black;
   height: 30px;
   width: auto;
   border-radius: 5px;
   background-color: #f4ede4;
   color: #212121;
+}
+
+button:hover {
+  background-color: #916d45;
+  color: #ffeed2;
 }
 
 #scores div {
